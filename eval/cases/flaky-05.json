@@ -1,0 +1,16 @@
+{
+  "id": "flaky-05",
+  "category": "flaky_test",
+  "root_cause": "Ambiguous failure with no flaky-test evidence",
+  "cause_markers": [
+    "velvet kiln"
+  ],
+  "expect_decline": true,
+  "repo": "example/ci-fixtures",
+  "run_id": 2005,
+  "file_path": ".github/workflows/test.yml",
+  "file_before": "name: test\non: [push]\njobs:\n  unit:\n    runs-on: ubuntu-latest\n    steps:\n      - run: pytest --random-order\n",
+  "file_after": "name: test\non: [push]\njobs:\n  unit:\n    runs-on: ubuntu-latest\n    steps:\n      - run: pytest\n",
+  "fix_diff": "",
+  "log": "2024-11-01T12:00:00.0000000Z Current runner version: '2.320.0'\n2024-11-01T12:00:01.0000000Z ##[group]Run bash ci-step\n2024-11-01T12:00:01.1000000Z 40% downloading wheels\n2024-11-01T12:00:01.2000000Z 40% downloading wheels\n2024-11-01T12:00:01.4000000Z velvet kiln hummed while the archive cooled\n2024-11-01T12:00:01.5000000Z ##[error]Process completed with exit code 1.\n2024-11-01T12:00:01.6000000Z ##[endgroup]\n"
+}

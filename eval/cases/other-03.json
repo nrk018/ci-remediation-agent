@@ -1,0 +1,17 @@
+{
+  "id": "other-03",
+  "category": "other",
+  "root_cause": "Prettier check failed on formatting",
+  "cause_markers": [
+    "lint format checker",
+    "prettier found"
+  ],
+  "expect_decline": false,
+  "repo": "example/ci-fixtures",
+  "run_id": 5003,
+  "file_path": ".github/workflows/prettier.yml",
+  "file_before": "name: ci\non: [push]\njobs:\n  lint:\n    runs-on: ubuntu-latest\n    steps:\n      - run: prettier --check .\n",
+  "file_after": "name: ci\non: [push]\njobs:\n  lint:\n    runs-on: ubuntu-latest\n    steps:\n      - run: prettier --write .\n",
+  "fix_diff": "--- a/.github/workflows/prettier.yml\n+++ b/.github/workflows/prettier.yml\n@@ -4,4 +4,4 @@\n   lint:\n     runs-on: ubuntu-latest\n     steps:\n-      - run: prettier --check .\n+      - run: prettier --write .\n",
+  "log": "2024-11-01T12:00:00.0000000Z Current runner version: '2.320.0'\n2024-11-01T12:00:01.0000000Z ##[group]Run bash ci-step\n2024-11-01T12:00:01.1000000Z 40% downloading wheels\n2024-11-01T12:00:01.2000000Z 40% downloading wheels\n2024-11-01T12:00:01.3000000Z Affected file: .github/workflows/prettier.yml\n2024-11-01T12:00:01.4000000Z ERROR: lint format checker rejected whitespace style prettier found formatting issues\n2024-11-01T12:00:01.5000000Z ##[error]Process completed with exit code 1.\n2024-11-01T12:00:01.6000000Z ##[endgroup]\n"
+}

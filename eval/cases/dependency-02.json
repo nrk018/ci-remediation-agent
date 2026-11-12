@@ -1,0 +1,18 @@
+{
+  "id": "dependency-02",
+  "category": "dependency",
+  "root_cause": "Conflicting pins numpy==1.24.0 and pandas==2.2.0",
+  "cause_markers": [
+    "dependency resolution failed",
+    "numpy==1.24.0",
+    "wheelhouse conflict"
+  ],
+  "expect_decline": false,
+  "repo": "example/ci-fixtures",
+  "run_id": 1002,
+  "file_path": "requirements.txt",
+  "file_before": "numpy==1.24.0\npandas==2.2.0\n",
+  "file_after": "numpy==1.26.4\npandas==2.2.2\n",
+  "fix_diff": "--- a/requirements.txt\n+++ b/requirements.txt\n@@ -1,2 +1,2 @@\n-numpy==1.24.0\n-pandas==2.2.0\n+numpy==1.26.4\n+pandas==2.2.2\n",
+  "log": "2024-11-01T12:00:00.0000000Z Current runner version: '2.320.0'\n2024-11-01T12:00:01.0000000Z ##[group]Run bash ci-step\n2024-11-01T12:00:01.1000000Z 40% downloading wheels\n2024-11-01T12:00:01.2000000Z 40% downloading wheels\n2024-11-01T12:00:01.3000000Z Affected file: requirements.txt\n2024-11-01T12:00:01.4000000Z ERROR: dependency resolution failed: cannot satisfy pinned versions numpy==1.24.0 pandas==2.2.0 wheelhouse conflict\n2024-11-01T12:00:01.5000000Z ##[error]Process completed with exit code 1.\n2024-11-01T12:00:01.6000000Z ##[endgroup]\n"
+}

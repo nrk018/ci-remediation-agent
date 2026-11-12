@@ -1,0 +1,17 @@
+{
+  "id": "flaky-04",
+  "category": "flaky_test",
+  "root_cause": "Order-dependent fixture collision with no retry",
+  "cause_markers": [
+    "flaky nondeterministic",
+    "fixture collided"
+  ],
+  "expect_decline": false,
+  "repo": "example/ci-fixtures",
+  "run_id": 2004,
+  "file_path": ".github/workflows/retry.yml",
+  "file_before": "name: test\non: [push]\njobs:\n  unit:\n    runs-on: ubuntu-latest\n    steps:\n      - run: pytest -p no:randomly\n",
+  "file_after": "name: test\non: [push]\njobs:\n  unit:\n    runs-on: ubuntu-latest\n    steps:\n      - run: pytest --reruns 2\n",
+  "fix_diff": "--- a/.github/workflows/retry.yml\n+++ b/.github/workflows/retry.yml\n@@ -4,4 +4,4 @@\n   unit:\n     runs-on: ubuntu-latest\n     steps:\n-      - run: pytest -p no:randomly\n+      - run: pytest --reruns 2\n",
+  "log": "2024-11-01T12:00:00.0000000Z Current runner version: '2.320.0'\n2024-11-01T12:00:01.0000000Z ##[group]Run bash ci-step\n2024-11-01T12:00:01.1000000Z 40% downloading wheels\n2024-11-01T12:00:01.2000000Z 40% downloading wheels\n2024-11-01T12:00:01.3000000Z Affected file: .github/workflows/retry.yml\n2024-11-01T12:00:01.4000000Z ERROR: flaky nondeterministic test order race condition rerun-bucket rerun-bucket order-dependent fixture collided\n2024-11-01T12:00:01.5000000Z ##[error]Process completed with exit code 1.\n2024-11-01T12:00:01.6000000Z ##[endgroup]\n"
+}

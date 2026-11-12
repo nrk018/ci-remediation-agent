@@ -1,0 +1,17 @@
+{
+  "id": "flaky-01",
+  "category": "flaky_test",
+  "root_cause": "Test depends on random order and a short timing window",
+  "cause_markers": [
+    "flaky nondeterministic",
+    "timing window"
+  ],
+  "expect_decline": false,
+  "repo": "example/ci-fixtures",
+  "run_id": 2001,
+  "file_path": ".github/workflows/test.yml",
+  "file_before": "name: test\non: [push]\njobs:\n  unit:\n    runs-on: ubuntu-latest\n    steps:\n      - run: pytest --random-order\n",
+  "file_after": "name: test\non: [push]\njobs:\n  unit:\n    runs-on: ubuntu-latest\n    steps:\n      - run: pytest\n",
+  "fix_diff": "--- a/.github/workflows/test.yml\n+++ b/.github/workflows/test.yml\n@@ -4,4 +4,4 @@\n   unit:\n     runs-on: ubuntu-latest\n     steps:\n-      - run: pytest --random-order\n+      - run: pytest\n",
+  "log": "2024-11-01T12:00:00.0000000Z Current runner version: '2.320.0'\n2024-11-01T12:00:01.0000000Z ##[group]Run bash ci-step\n2024-11-01T12:00:01.1000000Z 40% downloading wheels\n2024-11-01T12:00:01.2000000Z 40% downloading wheels\n2024-11-01T12:00:01.3000000Z Affected file: .github/workflows/test.yml\n2024-11-01T12:00:01.4000000Z ERROR: flaky nondeterministic test order race condition random-order-bucket random-order-bucket assertion missed the timing window\n2024-11-01T12:00:01.5000000Z ##[error]Process completed with exit code 1.\n2024-11-01T12:00:01.6000000Z ##[endgroup]\n"
+}

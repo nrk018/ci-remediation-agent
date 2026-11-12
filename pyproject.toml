@@ -1,0 +1,38 @@
+[project]
+name = "ci-remediation-agent"
+version = "0.1.0"
+description = "Diagnose failed GitHub Actions runs, draft a human-approved fix PR, and expose the same steps as MCP tools."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn>=0.32",
+    "httpx>=0.27",
+    "pydantic>=2.9",
+    "langgraph>=0.2",
+    "mcp>=1.2",
+    "openai>=1.55",
+    "psycopg[binary]>=3.2",
+    "pgvector>=0.3",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.3"]
+
+[project.scripts]
+ci-remediation-api = "app.main:main"
+ci-remediation-mcp = "mcp_server.server:main"
+ci-remediation-eval = "eval.run_eval:main"
+ci-remediation-init-db = "app.init_db:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["app*", "mcp_server*", "eval*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

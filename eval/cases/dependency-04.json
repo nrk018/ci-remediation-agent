@@ -1,0 +1,17 @@
+{
+  "id": "dependency-04",
+  "category": "dependency",
+  "root_cause": "react-dom 17 does not satisfy the react 18 peer dependency",
+  "cause_markers": [
+    "dependency resolution failed",
+    "lockfile mismatch"
+  ],
+  "expect_decline": false,
+  "repo": "example/ci-fixtures",
+  "run_id": 1004,
+  "file_path": "package.json",
+  "file_before": "{\n  \"name\": \"demo\",\n  \"dependencies\": {\n    \"react\": \"18.2.0\",\n    \"react-dom\": \"17.0.2\"\n  }\n}\n",
+  "file_after": "{\n  \"name\": \"demo\",\n  \"dependencies\": {\n    \"react\": \"18.2.0\",\n    \"react-dom\": \"18.2.0\"\n  }\n}\n",
+  "fix_diff": "--- a/package.json\n+++ b/package.json\n@@ -2,6 +2,6 @@\n   \"name\": \"demo\",\n   \"dependencies\": {\n     \"react\": \"18.2.0\",\n-    \"react-dom\": \"17.0.2\"\n+    \"react-dom\": \"18.2.0\"\n   }\n }\n",
+  "log": "2024-11-01T12:00:00.0000000Z Current runner version: '2.320.0'\n2024-11-01T12:00:01.0000000Z ##[group]Run bash ci-step\n2024-11-01T12:00:01.1000000Z 40% downloading wheels\n2024-11-01T12:00:01.2000000Z 40% downloading wheels\n2024-11-01T12:00:01.3000000Z Affected file: package.json\n2024-11-01T12:00:01.4000000Z ERROR: dependency resolution failed: cannot satisfy pinned versions react-dom 17 peer of react 18 lockfile mismatch\n2024-11-01T12:00:01.5000000Z ##[error]Process completed with exit code 1.\n2024-11-01T12:00:01.6000000Z ##[endgroup]\n"
+}

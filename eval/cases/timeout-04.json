@@ -1,0 +1,17 @@
+{
+  "id": "timeout-04",
+  "category": "timeout",
+  "root_cause": "Port 5432 was still closed when the step timed out",
+  "cause_markers": [
+    "timeout exceeded",
+    "5432"
+  ],
+  "expect_decline": false,
+  "repo": "example/ci-fixtures",
+  "run_id": 4004,
+  "file_path": ".github/workflows/services.yml",
+  "file_before": "name: ci\non: [push]\njobs:\n  build:\n    runs-on: ubuntu-latest\n    steps:\n      - run: docker compose up --wait\n        timeout-minutes: 1\n",
+  "file_after": "name: ci\non: [push]\njobs:\n  build:\n    runs-on: ubuntu-latest\n    steps:\n      - run: docker compose up --wait\n        timeout-minutes: 15\n",
+  "fix_diff": "--- a/.github/workflows/services.yml\n+++ b/.github/workflows/services.yml\n@@ -5,4 +5,4 @@\n     runs-on: ubuntu-latest\n     steps:\n       - run: docker compose up --wait\n-        timeout-minutes: 1\n+        timeout-minutes: 15\n",
+  "log": "2024-11-01T12:00:00.0000000Z Current runner version: '2.320.0'\n2024-11-01T12:00:01.0000000Z ##[group]Run bash ci-step\n2024-11-01T12:00:01.1000000Z 40% downloading wheels\n2024-11-01T12:00:01.2000000Z 40% downloading wheels\n2024-11-01T12:00:01.3000000Z Affected file: .github/workflows/services.yml\n2024-11-01T12:00:01.4000000Z ERROR: timeout exceeded service container unhealthy deadline port-wait-bucket port-wait-bucket port 5432 was still closed\n2024-11-01T12:00:01.5000000Z ##[error]Process completed with exit code 1.\n2024-11-01T12:00:01.6000000Z ##[endgroup]\n"
+}

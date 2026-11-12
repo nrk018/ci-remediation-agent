@@ -1,0 +1,17 @@
+{
+  "id": "config-02",
+  "category": "config",
+  "root_cause": "DATABASE_URL is missing from the job environment",
+  "cause_markers": [
+    "configuration key missing",
+    "database url"
+  ],
+  "expect_decline": false,
+  "repo": "example/ci-fixtures",
+  "run_id": 3002,
+  "file_path": ".github/workflows/ci.yml",
+  "file_before": "name: ci\non: [push]\njobs:\n  build:\n    runs-on: ubuntu-latest\n    enviornment: production\n    steps:\n      - run: echo hi\n",
+  "file_after": "name: ci\non: [push]\njobs:\n  build:\n    runs-on: ubuntu-latest\n    environment: production\n    steps:\n      - run: echo hi\n",
+  "fix_diff": "--- a/.github/workflows/ci.yml\n+++ b/.github/workflows/ci.yml\n@@ -3,6 +3,6 @@\n jobs:\n   build:\n     runs-on: ubuntu-latest\n-    enviornment: production\n+    environment: production\n     steps:\n       - run: echo hi\n",
+  "log": "2024-11-01T12:00:00.0000000Z Current runner version: '2.320.0'\n2024-11-01T12:00:01.0000000Z ##[group]Run bash ci-step\n2024-11-01T12:00:01.1000000Z 40% downloading wheels\n2024-11-01T12:00:01.2000000Z 40% downloading wheels\n2024-11-01T12:00:01.3000000Z Affected file: .github/workflows/ci.yml\n2024-11-01T12:00:01.4000000Z ERROR: configuration key missing environment variable runner label database url was not set\n2024-11-01T12:00:01.5000000Z ##[error]Process completed with exit code 1.\n2024-11-01T12:00:01.6000000Z ##[endgroup]\n"
+}

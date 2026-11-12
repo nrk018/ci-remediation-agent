@@ -1,0 +1,17 @@
+{
+  "id": "other-02",
+  "category": "other",
+  "root_cause": "Formatter whitespace drift failed the lint step",
+  "cause_markers": [
+    "lint format checker",
+    "whitespace drift"
+  ],
+  "expect_decline": false,
+  "repo": "example/ci-fixtures",
+  "run_id": 5002,
+  "file_path": ".github/workflows/lint.yml",
+  "file_before": "name: ci\non: [push]\njobs:\n  lint:\n    runs-on: ubuntu-latest\n    steps:\n      - run: ruff check .\n",
+  "file_after": "name: ci\non: [push]\njobs:\n  lint:\n    runs-on: ubuntu-latest\n    steps:\n      - run: ruff format .\n      - run: ruff check .\n",
+  "fix_diff": "--- a/.github/workflows/lint.yml\n+++ b/.github/workflows/lint.yml\n@@ -4,4 +4,5 @@\n   lint:\n     runs-on: ubuntu-latest\n     steps:\n+      - run: ruff format .\n       - run: ruff check .\n",
+  "log": "2024-11-01T12:00:00.0000000Z Current runner version: '2.320.0'\n2024-11-01T12:00:01.0000000Z ##[group]Run bash ci-step\n2024-11-01T12:00:01.1000000Z 40% downloading wheels\n2024-11-01T12:00:01.2000000Z 40% downloading wheels\n2024-11-01T12:00:01.3000000Z Affected file: .github/workflows/lint.yml\n2024-11-01T12:00:01.4000000Z ERROR: lint format checker rejected whitespace style black-compatible whitespace drift\n2024-11-01T12:00:01.5000000Z ##[error]Process completed with exit code 1.\n2024-11-01T12:00:01.6000000Z ##[endgroup]\n"
+}
